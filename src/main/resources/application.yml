@@ -1,0 +1,45 @@
+server:
+  servlet:
+    session:
+      timeout: 1h
+      cookie:
+        max-age: 1h
+      session:
+        persistent: false
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: adamoulehiane2@gmail.com
+    password: jjoq qckt ifgp huii
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  application:
+    name: E-medcare
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    url: jdbc:mysql://localhost:3306/confidentielty
+    username: root
+    password: ""
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        use_sql_comments: true
+    database: mysql
+
+
