@@ -19,8 +19,7 @@ spring:
           starttls:
             enable: true
   application:
-    name: E-medcare
-
+    name: Confidentialite
   servlet:
     multipart:
       max-file-size: 100MB
