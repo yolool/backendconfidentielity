@@ -3,6 +3,7 @@ WORKDIR /app
 
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
+RUN mkdir -p /app/uploads
 
 
 COPY src ./src
