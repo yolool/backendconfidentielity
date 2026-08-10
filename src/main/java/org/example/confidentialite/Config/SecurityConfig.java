@@ -96,7 +96,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:4200",
                 "https://testfront-flame.vercel.app",
-                "http://10.130.238.232:4200/"
+                "http://localhost:80"
         ));
 
         configuration.setAllowedMethods(List.of(
