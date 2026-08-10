@@ -25,7 +25,7 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
   datasource:
-    url: jdbc:mysql://mysql-db:3307/confidentielty
+    url: jdbc:mysql://mysql-db:3306/confidentielty
     username: root
     password: ""
     driver-class-name: com.mysql.cj.jdbc.Driver
