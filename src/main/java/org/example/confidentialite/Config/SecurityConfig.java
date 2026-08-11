@@ -98,7 +98,8 @@ public class SecurityConfig {
                 "https://testfront-flame.vercel.app",
                 "http://localhost:80",
                 "http://localhost",
-                "http://57.174.232.113:30080"
+                "http://57.174.232.113:30080",
+                "http://172.160.226.189:30080"
         ));
 
         configuration.setAllowedMethods(List.of(
