@@ -8,6 +8,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'adam020/backend-confidentiality'
         DOCKER_TAG   = "${BUILD_NUMBER}"
+        TELEGRAM_CHAT_ID = '-1003962149031'
     }
     
     stages {
@@ -68,14 +69,25 @@ pipeline {
     
     post {
         always {
-            echo '🧹 Cleaning up workspace...'
             cleanWs()
         }
         success {
-            echo '✅ Pipeline completed successfully!'
+            withCredentials([string(credentialsId: 'telegram-token', variable: 'TG_TOKEN')]) {
+                sh '''
+                    curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+                      --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+                      --data-urlencode "text=✅ BACKEND build #${BUILD_NUMBER} SUCCESS"
+                '''
+            }
         }
         failure {
-            echo '❌ Pipeline failed! Check the logs.'
+            withCredentials([string(credentialsId: 'telegram-token', variable: 'TG_TOKEN')]) {
+                sh '''
+                    curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+                      --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+                      --data-urlencode "text=❌ BACKEND build #${BUILD_NUMBER} FAILED — check Jenkins!"
+                '''
+            }
         }
     }
 }
